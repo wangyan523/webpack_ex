@@ -21,7 +21,13 @@ module.exports = {
       test: /\.scss$/,
       use: [
         'style-loader', 
-        'css-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoader: 2,
+            modules: true
+          }
+        },
         'sass-loader',
         'postcss-loader'
       ]
