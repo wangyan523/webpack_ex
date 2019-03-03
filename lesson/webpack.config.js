@@ -18,14 +18,19 @@ module.exports = {
         },
       }
     },{
+      test: /\.(eot|ttf|svg|woff)$/,
+      use: {
+        loader: 'file-loader',
+      }
+    },{
       test: /\.scss$/,
       use: [
         'style-loader', 
+        // 'css-loader',
         {
           loader: 'css-loader',
           options: {
-            importLoader: 2,
-            modules: true
+            importLoaders: 2,
           }
         },
         'sass-loader',
