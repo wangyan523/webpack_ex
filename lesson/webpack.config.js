@@ -1,12 +1,13 @@
-const path = require('path')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
-  mode: 'development',
-  output: {
-    filename: 'bundle-wy.js',
-    path: path.resolve(__dirname, 'bundle')
+  entry: {
+    main: './src/index.js',
+    sub: './src/index.js'
   },
+  mode: 'development',
   module: {
     rules:[{
       test: /\.png$/,
@@ -37,5 +38,13 @@ module.exports = {
         'postcss-loader'
       ]
     }]
-  }
+  },
+  plugins: [new HtmlWebpackPlugin({
+    template: 'src/index.html'
+  }), new CleanWebpackPlugin()],
+  output: {
+    publicPath: 'www.wyyyyyy.com',
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist')
+  },
 }
