@@ -1,1 +1,3 @@
-consele.log('hello world');
+import { add } from './math'
+
+add(1, 3)
