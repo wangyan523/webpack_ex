@@ -1,19 +1,37 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
-
 module.exports = {
   entry: {
     main: './src/index.js'
   },
-  devtool: 'cheap-module-source-map',
-  mode: 'production',
   module: {
     rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
       loader: "babel-loader",
+      // options: {
+      //   presets: [
+      //     ['@babel/preset-env',
+      //       {
+      //         targets: {
+      //           chrome: "67",
+      //         },
+      //         useBuiltIns: 'usage'
+      //       }
+      //     ]
+      //   ]
+      //   "plugins": [
+      //     ["@babel/plugin-transform-runtime",
+      //       {
+      //         "corejs": 2,
+      //         "helpers": true,
+      //         "regenerator": true,
+      //         "useESModules": false
+      //       }
+      //     ]
+      //   ]
+      // }
     }, {
       test: /\.png$/,
       use: {
@@ -55,10 +73,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: path.resolve(__dirname, '../dist')
+    }),
   ],
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
-  },
+    path: path.resolve(__dirname, '../dist')
+  }
 }
