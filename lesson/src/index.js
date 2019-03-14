@@ -1,3 +1,11 @@
-import { add } from './math'
+function getComponent() {
+  return import('lodash').then(({default: _}) => {
+    var element = document.createElement('div');
+    element.innerHTML = _.join(['wyyyyy', 'hello'], '-');
+    return element;
+  })
+}
 
-add(1, 9)
+getComponent().then(el => {
+  document.body.appendChild(el)
+})

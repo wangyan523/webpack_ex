@@ -35,10 +35,9 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-middleware": "^3.6.1",
     "webpack-dev-server": "^3.2.1",
-    "webpack-merge": "^4.2.1"
-  },
-  "dependencies": {
+    "webpack-merge": "^4.2.1",
     "@babel/polyfill": "^7.2.5",
-    "@babel/runtime-corejs2": "^7.3.4"
+    "@babel/runtime-corejs2": "^7.3.4",
+    "babel-plugin-dynamic-import-webpack": "^1.1.0"
   }
 }
