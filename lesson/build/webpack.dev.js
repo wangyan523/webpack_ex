@@ -9,11 +9,36 @@ const devConfig = {
     contentBase: './dist',
     hot: true
   },
+  module: {
+    rules: [{
+      test: /\.scss$/,
+      use: [
+        'style-loader',
+        // 'css-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 2,
+          }
+        },
+        'sass-loader',
+        'postcss-loader'
+      ]
+    }, {
+      test: /\.css$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'postcss-loader'
+      ]
+    }]
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
-  optimization: {
-    usedExports: true
+  output: {
+    filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
   }
 }
 

@@ -46,36 +46,15 @@ module.exports = {
       use: {
         loader: 'file-loader',
       }
-    }, {
-      test: /\.scss$/,
-      use: [
-        'style-loader',
-        // 'css-loader',
-        {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 2,
-          }
-        },
-        'sass-loader',
-        'postcss-loader'
-      ]
-    }, {
-      test: /\.css$/,
-      use: [
-        'style-loader',
-        'css-loader',
-        'postcss-loader'
-      ]
     }]
   },
   optimization: {
+    runtimeChunk: {
+      name: 'runtime'
+    },
+    usedExports: true,
     splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-        vendors: false,
-        default: false
-      }
+      chunks: 'all'
     }
   },
   plugins: [
@@ -87,7 +66,6 @@ module.exports = {
     }),
   ],
   output: {
-    filename: '[name].js',
     path: path.resolve(__dirname, '../dist')
   }
 }
