@@ -1,4 +1,1 @@
-import './style.css';
-import './style1.css';
-
-console.log('111')
+console.log(this === window);
